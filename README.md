@@ -1,4 +1,4 @@
-# LookHere (NeurIPS 2024)
+# LookHere :eyes: (NeurIPS 2024 :tada:)
 Official code for "LookHere: Vision Transformers with Directed Attention Generalize and Extrapolate"
 
 arXiv link: https://arxiv.org/abs/2405.13985
@@ -8,11 +8,11 @@ NeurIPS link: https://neurips.cc/virtual/2024/poster/93643
 ImageNet-HR dataset: https://huggingface.co/datasets/antofuller/ImageNet-HR
 
 
-LookHere is a patch position encoding technique for ViTs. LookHere's main advantage is its extrapolation ability — outperforming 2D-RoPE by 21.7% on ImageNet-1k when trained at 224x224 px and tested on 1024x1024 px.
+LookHere is a patch position encoding technique for ViTs. LookHere's main advantage is its extrapolation ability — outperforming 2D-RoPE by 21.7% on ImageNet-1k when trained at 224x224 px and tested at 1024x1024 px.
 
 ## Basic usage
 
-First, lets download pretrained weights. These are the exact models we evaluate in our paper (trained for 150 epochs on ImageNet-1k). 
+First, let's download pretrained weights. We evaluate these models in our paper (trained for 150 epochs on ImageNet-1k).
 ```cli
 wget https://huggingface.co/antofuller/LookHere/resolve/main/LH_180_weights_and_config.pth
 wget https://huggingface.co/antofuller/LookHere/resolve/main/LH_90_weights_and_config.pth
@@ -49,13 +49,12 @@ with torch.no_grad():
     for batch in minival_loader:
         images, labels = batch
         images = images.cuda()  # (batch_size, 3, 224, 224)
-        labels = labels.cuda()  # (batch_size)
         with torch.cuda.amp.autocast(dtype=torch.bfloat16):
             logits = model(images)  # (batch_size, 1_000)
         preds = logits.argmax(dim=-1)  # (batch_size)
 ```
 
-Extrapolation is simple!
+Extrapolation is easy!
 
 ```python
 img_size = 1024
