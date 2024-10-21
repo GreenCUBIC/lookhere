@@ -19,6 +19,7 @@ wget https://huggingface.co/antofuller/LookHere/resolve/main/LH_90_weights_and_c
 wget https://huggingface.co/antofuller/LookHere/resolve/main/LH_45_weights_and_config.pth
 ```
 
+Now, we can load the model and make some predictions on minival!
 ```python
 import torch
 from lookhere import LookHere
