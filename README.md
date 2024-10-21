@@ -25,6 +25,7 @@ import torch
 from lookhere import LookHere
 from data_prep import ImageNetDataset
 from sklearn.metrics import accuracy_score
+from datasets import load_dataset
 
 # prepare model
 checkpoint = torch.load("LH_180_weights_and_config.pth")
